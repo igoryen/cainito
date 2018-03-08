@@ -1,222 +1,517 @@
-// ======= TOGGLES =======
-
-    // @import "compass/css3";
-
-    /* $activeColor: #c0392b; //red */
-    $activeColor: #27ae60; //green
-    $darkenColor: darken($activeColor, 20%);
-    // $background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/13460/dark_wall.png');
-    $background: #3498db;
-
-    /* .slideOne */
-    .slideOne {
-        background: #333;
-        border-radius: 50px;
-        box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
-        height: 10px;
-        margin: 20px auto;
-        position: relative;
-        width: 50px;
-
-        label {
-            background: #fcfff4;
-            background: linear-gradient(to bottom, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
-            border-radius: 50px;
-            box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
-            cursor: pointer;
-            display: block;
-            height: 16px;
-            left: -3px;
-            position: absolute;
-            top: -3px;
-            transition: all 0.4s ease;
-            width: 16px;
-        }
-        input[type=checkbox] {
-            visibility: hidden;
-            &:checked + label {
-                left: 37px;
-            }  
-        }
-    }
-    /* end .slideOne */
+//================================
+//  RADIOS AS A SELECT
+//================================
 
 
-    /* .slideTwo */
-    .slideTwo {
-        background: #333;
-        border-radius: 50px;
-        box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
-        height: 30px;
-        margin: 20px auto;
-        position: relative;
-        width: 80px;
+    #radios_as_select {
+//1e90ff
 
-        &:after {
-            background: #111;
-            border-radius: 50px;
-            box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
-            content: '';
-            height: 2px;
-            left: 14px;
-            position: absolute;
-            top: 14px;
-            width: 52px;
-        }
-        label {
-            background: #fcfff4;
-            background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
-            border-radius: 50px;
-            box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
-            cursor: pointer;
-            display: block;
-            height: 22px;
-            left: 4px;
-            position: absolute;
-            top: 4px;
-            transition: all 0.4s ease;
-            width: 22px;
-            z-index: 1;
+        $color_not_selected: #fff;
+        $color_not_selected_hover: #1e90ff;
+        $color_selected: #fff;
+        $color_text: black;
+        $color_text_hover: #fff;
+        $color_triangle: black;
+        
+        align-items: center;
+        background: #2d2d2d;
+        color: $color_text;
+        display: flex;
+        flex-wrap: wrap;
+        font-family:  sans-serif;
+        height: 100vh;
+        justify-content:  center;
+        margin: 0;
+        padding: 0;
+        width: 100vw;
 
-            &:after {
-                background: #333;
-                border-radius: 50px;
-                box-shadow: inset 0px 1px 1px rgba(0,0,0,1), 0px 1px 0px rgba(255,255,255,0.9);
-                content: '';
-                height: 10px;
-                left: 6px;
-                position: absolute;
-                top: 6px;
-                width: 10px;
-            }
-        }
-        input[type=checkbox] {
-            visibility: hidden;
-            &:checked + label {
-                left: 54px;
-                &:after {
-                    background: $activeColor; /*activeColor*/
+        .select {
+            display: flex;
+            flex-direction:  column;
+            height: 40px;
+            position: relative;
+            width: 250px;
+
+            &:focus {
+                .option {
+                    position: relative;
+                    pointer-events: all;
                 }
             }
-        }    
-    }
-    /* end .slideTwo */
-
-
-    /* .slideThree */
-    .slideThree {
-        background: #333;
-        border-radius: 50px;
-        box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
-        height: 26px;
-        margin: 20px auto;
-        position: relative;
-        width: 80px;
-      
-        &:after {
-            color: #000;
-            content: 'OFF';
-            font-weight: bold;
-            font: 12px/26px Arial, sans-serif;
-            position: absolute;
-            right: 10px;
-            text-shadow: 1px 1px 0px rgba(255,255,255,.15);
-            z-index: 0;
         }
-        &:before {
-            color: $activeColor;
-            content: 'ON';
-            
-            font: 12px/26px Arial, sans-serif;
-            font-weight: bold;
-            left: 10px;
+
+        .option {
+            align-items: center;
+            background: $color_not_selected;
+            // border-top: #222 solid 1px;
+            box-sizing: border-box;
+            display: flex;
+            min-height: 40px;
+            order: 2;
+            overflow: hidden;
+            padding: 0 30px 0 10px;
+            pointer-events: none;
             position: absolute;
-            z-index: 0;
-        }
-        label {
-            background: #fcfff4;
-            background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
-            border-radius: 50px;
-            box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
-            cursor: pointer;
-            display: block;
-            height: 20px;
-            left: 3px;
-            position: absolute;
-            top: 3px;
-            transition: all 0.4s ease;
-            width: 34px;
+            top: 0;
+            // transition: all .2s ease-in-out;
+            white-space: nowrap;
+            width:  100%;
             z-index: 1;
-        }
-        input[type=checkbox] {
-            visibility: hidden;
-            &:checked + label {
-                left: 43px;
+
+            &:hover {
+                background: $color_not_selected_hover;
+                color: $color_text_hover;
             }
-        }    
+
+        }
+
+        
+
+        
+
+        input {
+            left: -99999px;
+            opacity:  0;
+            position:  absolute;
+
+
+            &:checked + label {
+                background: $color_selected;
+                border-top: none;
+                order:  1;
+                position: relative;
+                z-index: 2;
+
+
+                &:after {
+                    border-left:  3px solid transparent;
+                    border-right:  3px solid transparent;
+                    border-top:  6px solid $color_triangle;
+                    content: '';
+                    height:  0; 
+                    pointer-events: none;
+                    position: absolute;
+                    right:  10px;
+                    top:  calc(50% - 2.5px);
+                    width:  0; 
+                    z-index: 3;
+                }
+
+                &:before {
+                    background: $color_selected;
+                    // background: red;
+                    content:  '';
+                    height:  40px;
+                    position: absolute;
+                    right: 0;
+                    width:  40px;
+                    // transition: background .2s ease-in-out;
+
+
+                }
+                &:hover {
+                    &:before {
+                        background: $color_not_selected_hover;
+                    }
+                }
+            }
+        }
     }
-    /* end .slideThree */
 
 
-    /* .roundedOne */
-    .roundedOne {
+
+//===================================
+//      MASONRY FLUID
+//===================================
+
+* { box-sizing: border-box; }
+
+body { font-family: sans-serif; }
+
+/* ---- grid ---- */
+
+// .grid {
+//     display: flex;
+
+//     .grid-item {
+//         flex-grow: 1;
+//     }
+// }
+
+
+    .grid {
+      background: #EEE;
+      // max-width: 1200px;
+    }
+
+    /* clearfix */
+    .grid:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+
+    /* ---- grid-item ---- */
+
+    .grid-sizer,
+    .grid-item {
+      width: 17%;
+    }
+
+    .grid-item {
+      // width: 160px;
+      height: 120px;
+      float: left;
+      background: #D26;
+      border: 2px solid #333;
+      border-color: hsla(0, 0%, 0%, 0.5);
+      // border-radius: 5px;
+    }
+
+    #_1, 
+    #_4 { width: 320px; }
+    #_2 { width: 13em; }
+    #_3 { width: 640px; }
+
+    #_3 { height: 200px; }
+    #_2 { height: 260px; }
+    #_4 { height: 360px; }
+
+
+
+
+
+//===================================
+//      WRAPPING COLUMNS
+//===================================
+
+    #wrapping_column {
+        width: 450px;
+        height: 400px;
+        border: 1px solid;
+    }
+
+    .wc_parent {
+        background-color: #E0FFF4;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        height: 100%;
+        width: 100%;
+    }
+    .wc_child {
+        box-sizing: border-box;
+        background-color: #CEBFFF;
+        flex-grow: 1;
+        margin: 15px;
+        min-height: 60px;
+        // width: calc(30% - 30px);
+        width: 30%;
+
+       }
+
+    #num1 {
+        padding: 1em;
+    }
+    #num2 {
+        padding: 2em;
+    }
+    #num3 {
+        padding: .3em;
+    }
+    #num4 {
+        padding: 3em;
+    }
+    #num5 {
+        padding: 4em;
+    }
+
+
+
+
+
+
+//===================================
+//      GRID COLUMNS
+//===================================
+$item-side: 50px;
+
+#grid_columns {
+    display: grid;
+    grid-gap: 10px;
+
+    > div:nth-child(3n + 1) {
+        grid-row: 1;
+        background-color: aqua;
+    }
+
+    > div:nth-child(3n + 2) {
+        grid-row: 2;
+        background-color: orange;
+    }
+
+    > div:nth-child(3n + 3) {
+        grid-row: 3;
+        background-color: lightgreen;
+    }
+
+    > div {
+        margin: 0;
+        padding: 10px;
+    }
+
+
+
+}
+
+
+
+.flex-item {
+    background-color: orange;
+    margin: .3em;
+    padding: $item-side;
+    width: 100%;
+}
+// ===================================
+//   TOGGLES
+//====================================
+
+// @import "compass/css3";
+
+/* $activeColor: #c0392b; //red */
+$activeColor: #27ae60;
+
+//green
+$darkenColor: darken($activeColor, 20%);
+
+// $background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/13460/dark_wall.png');
+$background: #3498db;
+
+/* .slideOne */
+.slideOne {
+    background: #333;
+    border-radius: 50px;
+    box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+    height: 10px;
+    margin: 20px auto;
+    position: relative;
+    width: 50px;
+
+    label {
+        background: #fcfff4;
+        background: linear-gradient(to bottom, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+        border-radius: 50px;
+        box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+        display: block;
+        height: 16px;
+        left: -3px;
+        position: absolute;
+        top: -3px;
+        transition: all 0.4s ease;
+        width: 16px;
+    }
+
+    input[type=checkbox] {
+        visibility: hidden;
+
+        &:checked + label {
+            left: 37px;
+        }
+    }
+}
+
+/* end .slideOne */
+
+/* .slideTwo */
+.slideTwo {
+    background: #333;
+    border-radius: 50px;
+    box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+    height: 30px;
+    margin: 20px auto;
+    position: relative;
+    width: 80px;
+
+    &:after {
+        background: #111;
+        border-radius: 50px;
+        box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+        content: '';
+        height: 2px;
+        left: 14px;
+        position: absolute;
+        top: 14px;
+        width: 52px;
+    }
+
+    label {
         background: #fcfff4;
         background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
         border-radius: 50px;
-        box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
-        height: 28px;
-        margin: 20px auto;
-        position: relative;
-        width: 28px;
+        box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+        display: block;
+        height: 22px;
+        left: 4px;
+        position: absolute;
+        top: 4px;
+        transition: all 0.4s ease;
+        width: 22px;
+        z-index: 1;
 
-        label {
-            background: linear-gradient(top, #222 0%, #45484d 100%);
+        &:after {
+            background: #333;
             border-radius: 50px;
-            box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);
-            cursor: pointer;
-            height: 20px;
-            left: 4px;
+            box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 1), 0px 1px 0px rgba(255, 255, 255, 0.9);
+            content: '';
+            height: 10px;
+            left: 6px;
             position: absolute;
-            top: 4px;
-            width: 20px;
+            top: 6px;
+            width: 10px;
+        }
+    }
+
+    input[type=checkbox] {
+        visibility: hidden;
+
+        &:checked + label {
+            left: 54px;
+
             &:after {
                 background: $activeColor;
-                background: linear-gradient(top, $activeColor 0%, $darkenColor 100%);
-                border-radius: 50px;
-                box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
-                content: '';
-                height: 16px;
-                left: 2px;
-                opacity: 0;
-                position: absolute;
-                top: 1px;
-                width: 16px;
+
+                /*activeColor*/
             }
-          &:hover::after {
-              opacity: 0.3;
-          }
         }
-        input[type=checkbox] {
-            visibility: hidden;
-            &:checked + label:after {
-                opacity: 1;
-            }
-        }    
     }
-    /* end .roundedOne */
+}
 
+/* end .slideTwo */
 
-    /* .roundedTwo */
-    .roundedTwo {
-      width: 28px;
-      height: 28px;
-      position: relative;
-      margin: 20px auto;
-      background: #fcfff4;
-      background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
-      border-radius: 50px;
-      box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
-      label {
+/* .slideThree */
+.slideThree {
+    background: #333;
+    border-radius: 50px;
+    box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+    height: 26px;
+    margin: 20px auto;
+    position: relative;
+    width: 80px;
+
+    &:after {
+        color: #000;
+        content: 'OFF';
+        font-weight: bold;
+        font: 12px/26px Arial, sans-serif;
+        position: absolute;
+        right: 10px;
+        text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.15);
+        z-index: 0;
+    }
+
+    &:before {
+        color: $activeColor;
+        content: 'ON';
+        font: 12px/26px Arial, sans-serif;
+        font-weight: bold;
+        left: 10px;
+        position: absolute;
+        z-index: 0;
+    }
+
+    label {
+        background: #fcfff4;
+        background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+        border-radius: 50px;
+        box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+        display: block;
+        height: 20px;
+        left: 3px;
+        position: absolute;
+        top: 3px;
+        transition: all 0.4s ease;
+        width: 34px;
+        z-index: 1;
+    }
+
+    input[type=checkbox] {
+        visibility: hidden;
+
+        &:checked + label {
+            left: 43px;
+        }
+    }
+}
+
+/* end .slideThree */
+
+/* .roundedOne */
+.roundedOne {
+    background: #fcfff4;
+    background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    border-radius: 50px;
+    box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
+    height: 28px;
+    margin: 20px auto;
+    position: relative;
+    width: 28px;
+
+    label {
+        background: linear-gradient(top, #222 0%, #45484d 100%);
+        border-radius: 50px;
+        box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 1);
+        cursor: pointer;
+        height: 20px;
+        left: 4px;
+        position: absolute;
+        top: 4px;
+        width: 20px;
+
+        &:after {
+            background: $activeColor;
+            background: linear-gradient(top, $activeColor 0%, $darkenColor 100%);
+            border-radius: 50px;
+            box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
+            content: '';
+            height: 16px;
+            left: 2px;
+            opacity: 0;
+            position: absolute;
+            top: 1px;
+            width: 16px;
+        }
+
+        &:hover::after {
+            opacity: 0.3;
+        }
+    }
+
+    input[type=checkbox] {
+        visibility: hidden;
+
+        &:checked + label:after {
+            opacity: 1;
+        }
+    }
+}
+
+/* end .roundedOne */
+
+/* .roundedTwo */
+.roundedTwo {
+    width: 28px;
+    height: 28px;
+    position: relative;
+    margin: 20px auto;
+    background: #fcfff4;
+    background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    border-radius: 50px;
+    box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
+
+    label {
         width: 20px;
         height: 20px;
         position: absolute;
@@ -225,46 +520,50 @@
         cursor: pointer;
         background: linear-gradient(top, #222 0%, #45484d 100%);
         border-radius: 50px;
-        box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);
+        box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 1);
+
         &:after {
-          content: '';
-          width: 9px;
-          height: 5px;
-          position: absolute;
-          top: 5px;
-          left: 4px;
-          border: 3px solid #fcfff4;
-          border-top: none;
-          border-right: none;
-          background: transparent;
-          opacity: 0;
-          transform: rotate(-45deg);
-      }
-      &:hover::after {
-          opacity: 0.3;
-      }
+            content: '';
+            width: 9px;
+            height: 5px;
+            position: absolute;
+            top: 5px;
+            left: 4px;
+            border: 3px solid #fcfff4;
+            border-top: none;
+            border-right: none;
+            background: transparent;
+            opacity: 0;
+            transform: rotate(-45deg);
+        }
+
+        &:hover::after {
+            opacity: 0.3;
+        }
     }
+
     input[type=checkbox] {
         visibility: hidden;
+
         &:checked + label:after {
-          opacity: 1;
-      } 
-    }   
+            opacity: 1;
+        }
     }
-    /* end .roundedTwo */
+}
 
+/* end .roundedTwo */
 
+/* .squaredOne */
+.squaredOne {
+    width: 28px;
+    height: 28px;
+    position: relative;
+    margin: 20px auto;
+    background: #fcfff4;
+    background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
 
-    /* .squaredOne */
-    .squaredOne {
-      width: 28px;
-      height: 28px;
-      position: relative;
-      margin: 20px auto;
-      background: #fcfff4;
-      background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
-      box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
-      label {
+    label {
         width: 20px;
         height: 20px;
         position: absolute;
@@ -272,43 +571,48 @@
         left: 4px;
         cursor: pointer;
         background: linear-gradient(top, #222 0%, #45484d 100%);
-        box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);
+        box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 1);
+
         &:after {
-          content: '';
-          width: 16px;
-          height: 16px;
-          position: absolute;
-          top: 2px;
-          left: 2px;
-          background: $activeColor;
-          background: linear-gradient(top, $activeColor 0%, $darkenColor 100%);
-          box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
-          opacity: 0;
-      }
-      &:hover::after {
-          opacity: 0.3;
-      }
+            content: '';
+            width: 16px;
+            height: 16px;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            background: $activeColor;
+            background: linear-gradient(top, $activeColor 0%, $darkenColor 100%);
+            box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+        }
+
+        &:hover::after {
+            opacity: 0.3;
+        }
     }
+
     input[type=checkbox] {
         visibility: hidden;
+
         &:checked + label:after {
-          opacity: 1;
-      }   
-    } 
+            opacity: 1;
+        }
     }
-    /* end .squaredOne */
+}
 
+/* end .squaredOne */
 
-    /* .squaredTwo */
-    .squaredTwo {
-      width: 28px;
-      height: 28px;
-      position: relative;
-      margin: 20px auto;
-      background: #fcfff4;
-      background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
-      box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
-      label {
+/* .squaredTwo */
+.squaredTwo {
+    width: 28px;
+    height: 28px;
+    position: relative;
+    margin: 20px auto;
+    background: #fcfff4;
+    background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
+
+    label {
         width: 20px;
         height: 20px;
         cursor: pointer;
@@ -316,41 +620,46 @@
         left: 4px;
         top: 4px;
         background: linear-gradient(top, #222 0%, #45484d 100%);
-        box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);
+        box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 1);
+
         &:after {
-          content: '';
-          width: 9px;
-          height: 5px;
-          position: absolute;
-          top: 4px;
-          left: 4px;
-          border: 3px solid #fcfff4;
-          border-top: none;
-          border-right: none;
-          background: transparent;
-          opacity: 0;
-          transform: rotate(-45deg);
-      }
-      &:hover::after {
-          opacity: 0.3;
-      }
+            content: '';
+            width: 9px;
+            height: 5px;
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            border: 3px solid #fcfff4;
+            border-top: none;
+            border-right: none;
+            background: transparent;
+            opacity: 0;
+            transform: rotate(-45deg);
+        }
+
+        &:hover::after {
+            opacity: 0.3;
+        }
     }
+
     input[type=checkbox] {
         visibility: hidden;
+
         &:checked + label:after {
-          opacity: 1;
-      }    
+            opacity: 1;
+        }
     }
-    }
-    /* end .squaredTwo */
+}
 
+/* end .squaredTwo */
 
-    /* .squaredThree */
-    .squaredThree {
-      width: 20px;
-      position: relative;
-      margin: 20px auto;
-      label {
+/* .squaredThree */
+.squaredThree {
+    width: 20px;
+    position: relative;
+    margin: 20px auto;
+
+    label {
         width: 20px;
         height: 20px;
         cursor: pointer;
@@ -359,41 +668,46 @@
         left: 0;
         background: linear-gradient(top, #222 0%, #45484d 100%);
         border-radius: 4px;
-        box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,.4);
+        box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.4);
+
         &:after {
-          content: '';
-          width: 9px;
-          height: 5px;
-          position: absolute;
-          top: 4px;
-          left: 4px;
-          border: 3px solid #fcfff4;
-          border-top: none;
-          border-right: none;
-          background: transparent;
-          opacity: 0;
-          transform: rotate(-45deg);
-      }
-      &:hover::after {
-          opacity: 0.3;
-      }
+            content: '';
+            width: 9px;
+            height: 5px;
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            border: 3px solid #fcfff4;
+            border-top: none;
+            border-right: none;
+            background: transparent;
+            opacity: 0;
+            transform: rotate(-45deg);
+        }
+
+        &:hover::after {
+            opacity: 0.3;
+        }
     }
+
     input[type=checkbox] {
         visibility: hidden;
+
         &:checked + label:after {
-          opacity: 1;
-      }    
+            opacity: 1;
+        }
     }
-    }
-    /* end .squaredThree */
+}
 
+/* end .squaredThree */
 
-    /* .squaredFour */
-    .squaredFour {
-      width: 20px;
-      position: relative;
-      margin: 20px auto;
-      label {
+/* .squaredFour */
+.squaredFour {
+    width: 20px;
+    position: relative;
+    margin: 20px auto;
+
+    label {
         width: 20px;
         height: 20px;
         cursor: pointer;
@@ -403,45 +717,50 @@
         background: #fcfff4;
         background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
         border-radius: 4px;
-        box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+        box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
+
         &:after {
-          content: '';
-          width: 9px;
-          height: 5px;
-          position: absolute;
-          top: 4px;
-          left: 4px;
-          border: 3px solid #333;
-          border-top: none;
-          border-right: none;
-          background: transparent;
-          opacity: 0;
-          transform: rotate(-45deg);
-      }
-      &:hover::after {
-          opacity: 0.5;
-      }
+            content: '';
+            width: 9px;
+            height: 5px;
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            border: 3px solid #333;
+            border-top: none;
+            border-right: none;
+            background: transparent;
+            opacity: 0;
+            transform: rotate(-45deg);
+        }
+
+        &:hover::after {
+            opacity: 0.5;
+        }
     }
+
     input[type=checkbox] {
         visibility: hidden;
+
         &:checked + label:after {
-          opacity: 1;
-      }
-    }    
+            opacity: 1;
+        }
     }
-    /* end .squaredFour */
+}
 
+/* end .squaredFour */
 
+// ** Page Styling - Nothing to do with the Radio Buttons **
+* {
+    box-sizing: border-box;
+}
 
+body {
+    background: $background;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
 
-
-    // ** Page Styling - Nothing to do with the Radio Buttons **
-    *{box-sizing: border-box;}
-    body {
-      background: $background;
-      font-family: 'Open Sans', sans-serif;
-      font-weight: 300;
-      h1, h2, em {
+    h1, h2, em {
         color: #eee;
         font-size: 30px;
         text-align: center;
@@ -449,61 +768,67 @@
         -webkit-font-smoothing: antialiased;
         text-shadow: 0px 1px #000;
     }
-    em{
+
+    em {
         font-size: 14px;
         text-align: center;
         display: block;
         margin-bottom: 0px;
     }
-    .ondisplay{
-        text-align:center;
-        padding:20px 0;
-        section{
-          width:100px;
-          height:100px;
-          background: #555;
-          display:inline-block;
-          position: relative;
-          text-align: center;
-          margin-top:5px;
-          border: 1px solid gray;
-          border-radius: 5px;
-          box-shadow:
-          0 1px 4px rgba(0, 0, 0, 0.3), 
-          0 0 40px rgba(0, 0, 0, 0.1) inset;
-          &:after{
-    /*         visibility: hidden; */
-    content:attr(title);
-    position: absolute;
-    width: 100%;
-    left: 0;
-    bottom: 3px;
-    color: #fff;
-    font-size: 12px;
-    font-weight: 400;
-    -webkit-font-smoothing: antialiased;
-    text-shadow: 0px 1px #000; 
+
+    .ondisplay {
+        text-align: center;
+        padding: 20px 0;
+
+        section {
+            width: 100px;
+            height: 100px;
+            background: #555;
+            display: inline-block;
+            position: relative;
+            text-align: center;
+            margin-top: 5px;
+            border: 1px solid gray;
+            border-radius: 5px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+
+            &:after {
+                /*         visibility: hidden; */
+                content: attr(title);
+                position: absolute;
+                width: 100%;
+                left: 0;
+                bottom: 3px;
+                color: #fff;
+                font-size: 12px;
+                font-weight: 400;
+                -webkit-font-smoothing: antialiased;
+                text-shadow: 0px 1px #000;
+            }
+        }
     }
-    }
-    }
-    }
+}
 
 //======= TOGGLES SLIDER =======
 
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro);
-*{
-    margin:0px;
-    padding:0px;
+
+* {
+    margin: 0px;
+    padding: 0px;
 }
-html{
+
+html {
     background: #497dd0;
 }
+
 .wrapper {
     margin: 1em 0;
 }
-.toggle_radio{
+
+.toggle_radio {
     position: relative;
-    background: rgba(255,255,255,.1);
+    background: rgba(255, 255, 255, 0.1);
     margin: 4px auto;
     overflow: hidden;
     padding: 0 !important;
@@ -513,17 +838,20 @@ html{
     position: relative;
     height: 26px;
     width: 318px;
+
     & > * {
         float: left;
     }
 
-    input[type=radio]{
+    input[type=radio] {
         display: none;
-    /*position: fixed;*/
+
+        /*position: fixed;*/
     }
-    label{
+
+    label {
         font: 90%/1.618 "Source Sans Pro";
-        color: rgba(255,255,255,.9);
+        color: rgba(255, 255, 255, 0.9);
         z-index: 0;
         display: block;
         width: 100px;
@@ -534,18 +862,23 @@ html{
         border-radius: 50px;
         cursor: pointer;
         z-index: 1;
+
         /*background: rgba(0,0,0,.1);*/
         text-align: center;
+
         /*margin: 0 2px;*/
-        /*background: blue;*/ /*make it blue*/
+        /*background: blue;*/
+
+        /*make it blue*/
     }
 }
+
 // .toggle_radio > * {
 //     float: left;
 // }
 // .toggle_radio input[type=radio]{
 //     display: none;
-// /*position: fixed;*/
+// /*position: fixed;
 // }
 // .toggle_radio label{
 //     font: 90%/1.618 "Source Sans Pro";
@@ -560,17 +893,16 @@ html{
 //     border-radius: 50px;
 //     cursor: pointer;
 //     z-index: 1;
-// /*background: rgba(0,0,0,.1);*/
+// /*background: rgba(0,0,0,.1);
 // text-align: center;
-// /*margin: 0 2px;*/
-// /*background: blue;*/ /*make it blue*/
+// /*margin: 0 2px;
+// /*background: blue;*/ /*make it blue
 // }
 
-@mixin toggle-option-slider-vendor-prefixes-1() {
+@mixin toggle-option-slider-vendor-prefixes-1 {
     -webkit-border-radius: 50px;
     -moz-border-radius: 50px;
     border-radius: 50px;
-
     -webkit-transition: all .4s ease;
     -moz-transition: all .4s ease;
     -o-transition: all .4s ease;
@@ -578,35 +910,35 @@ html{
     transition: all .4s ease;
 }
 
-.toggle_option_slider{
+.toggle_option_slider {
     /*background: red;*/
     /*display: none;*/
     height: 20px;
     position: absolute;
     top: 3px;
     width: 100px;
-    @include toggle-option-slider-vendor-prefixes-1();
-   
+
+    @include toggle-option-slider-vendor-prefixes-1;
 }
 
-#first_toggle, 
-#second_toggle, 
+#first_toggle,
+#second_toggle,
 #third_toggle {
     &:checked {
-        ~ .toggle_option_slider { 
-            background: rgba(255,255,255,.3);
+        ~ .toggle_option_slider {
+            background: rgba(255, 255, 255, 0.3);
         }
     }
 }
 
-
-#first_toggle{
+#first_toggle {
     &:checked {
         ~ .toggle_option_slider {
             left: 3px;
         }
     }
 }
+
 #second_toggle {
     &:checked {
         ~ .toggle_option_slider {
@@ -614,34 +946,39 @@ html{
         }
     }
 }
+
 #third_toggle {
     &:checked {
-        ~ .toggle_option_slider{
+        ~ .toggle_option_slider {
             left: 215px;
         }
     }
 }
 
-// ========== DROPDOWN CHANGE: ADD CLASS ========== 
+// ========== DROPDOWN CHANGE: ADD CLASS ==========
 
-    #dynomyte {
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-    }
+#dynomyte {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
 
-    #singers {
-        display: flex;
-        margin: 1em 0 2em;
-        select {
-            margin-right: 1em;
-        }
-    }
+#singers {
+    display: flex;
+    margin: 1em 0 2em;
 
-    .singer_profile_overview {
-        display: none;
+    select {
+        margin-right: 1em;
     }
+}
 
-    .visible {
-        display: block
-    }
+.singer_profile_overview {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
+
+//=============== DANNY KING ===================
+

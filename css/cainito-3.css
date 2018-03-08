@@ -1,0 +1,25 @@
+#toggle-additional-forms {
+  border: 1px solid red; }
+  #toggle-additional-forms section {
+    border: 1px solid blue; }
+
+#toggle-additional-forms {
+  display: flex;
+  justify-content: center; }
+  #toggle-additional-forms input[type="checkbox"] {
+    display: none; }
+    #toggle-additional-forms input[type="checkbox"] + label {
+      color: black;
+      cursor: pointer; }
+    #toggle-additional-forms input[type="checkbox"] + label span {
+      display: inline-block;
+      width: 22px;
+      height: 19px;
+      margin: -2px 5px 0 0;
+      vertical-align: middle;
+      background: url(../images/nas-check-radio-sheet.png) left top no-repeat;
+      cursor: pointer; }
+    #toggle-additional-forms input[type="checkbox"]:checked + label span {
+      background: url(../images/nas-check-radio-sheet.png) -25px top no-repeat; }
+
+/*# sourceMappingURL=cainito-3.css.map */
